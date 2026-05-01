@@ -63,7 +63,7 @@ class GameRoom:
         return self.get_player_count() >= 3 and self.state == GameState.WAITING
 
 class Database:
-    def init(self):
+    def __init__(self):
         self.rooms: Dict[str, GameRoom] = {}
         self.user_rooms: Dict[int, str] = {}  # user_id -> room_id
     

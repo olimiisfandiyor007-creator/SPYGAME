@@ -11,7 +11,7 @@ from words_data import get_all_categories, CATEGORIES
 
 # Настройка логирования
 logging.basicConfig(
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    format='%(asctime)s - %(__name__)s - %(level__name__)s - %(message)s',
     level=logging.INFO
 )
 logger = logging.getLogger(__name__)
@@ -23,7 +23,7 @@ def generate_room_id() -> str:
 def get_room_info_text(room) -> str:
     """Получить текст с информацией о комнате"""
     players_text = "\n".join([
-        f"{i+1}. {EMOJI['ready'] if p.is_ready else EMOJI['wait']} {p.first_name} (@{p.username})"
+        f"{i+1}. {EMOJI['ready'] if p.is_ready else EMOJI['wait']} {p.first___name__} (@{p.user__name__})"
         for i, p in enumerate(room.players)
     ])
     
@@ -64,7 +64,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     welcome_text = f"""
 {EMOJI['fire']} <b>Добро пожаловать в игру ШПИОН!</b>
 
-Привет, {user.first_name}!
+Привет, {user.first___name__}!
 
 {EMOJI['spy']} <b>Суть игры:</b>
 Все игроки получают одно слово, кроме шпионов. Задача мирных жителей - вычислить шпиона, не раскрывая слово. Задача шпиона - остаться незамеченным и угадать слово.
@@ -201,7 +201,7 @@ async def settings_done_handler(update: Update, context: ContextTypes.DEFAULT_TY
     
     # Создаем комнату
     room_id = generate_room_id()
-    room = db.create_room(room_id, user.id, user.username or "NoUsername", user.first_name)
+    room = db.create_room(room_id, user.id, user.user__name__ or "NoUser__name__", user.first___name__)
     
     # Применяем настройки
     room.spy_count = context.user_data.get('temp_spy_count', 1)
@@ -268,7 +268,7 @@ async def message_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             return
         
         user = update.effective_user
-        if db.join_room(room_code, user.id, user.username or "NoUsername", user.first_name):
+        if db.join_room(room_code, user.id, user.user__name__ or "NoUser__name__", user.first___name__):
             text = get_room_info_text(room)
             await update.message.reply_text(
                 f"{EMOJI['success']} Вы присоединились к комнате!\n\n{text}",
@@ -282,7 +282,7 @@ async def message_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     try:
                         await context.bot.send_message(
                             player.user_id,
-                            f"{EMOJI['info']} {user.first_name} присоединился к комнате!"
+                            f"{EMOJI['info']} {user.first___name__} присоединился к комнате!"
                         )
                     except:
                         pass
@@ -493,7 +493,7 @@ async def end_game_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     
     # Формируем список шпионов
     spies = [p for p in room.players if p.is_spy]
-    spies_text = "\n".join([f"• {p.first_name}" for p in spies])
+    spies_text = "\n".join([f"• {p.first___name__}" for p in spies])
     
     text = f"""
 {EMOJI['success']} <b>ИГРА ЗАВЕРШЕНА!</b>
