@@ -687,6 +687,6 @@ def main():
     logger.info("Бот запущен!")
     application.run_polling(allowed_updates=Update.ALL_TYPES)
 
-if name == 'main':
+if __name__ == '__main__':
     main()
     
