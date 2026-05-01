@@ -659,26 +659,26 @@ def main():
     application.add_handler(CommandHandler("start", start))
     
     # Регистрируем обработчики callback-запросов
-    application.add_handler(CallbackQueryHandler(create_room_handler, pattern='r'^create_room$'))
-    application.add_handler(CallbackQueryHandler(join_room_handler, pattern='r'^join_room$'))
-    application.add_handler(CallbackQueryHandler(rules_handler, pattern='r'^rules$'))
-    application.add_handler(CallbackQueryHandler(back_to_menu_handler, pattern='r'^back_to_menu$'))
+    application.add_handler(CallbackQueryHandler(create_room_handler, pattern=r'^create_room$'))
+    application.add_handler(CallbackQueryHandler(join_room_handler, pattern=r'^join_room$'))
+    application.add_handler(CallbackQueryHandler(rules_handler, pattern=r'^rules$'))
+    application.add_handler(CallbackQueryHandler(back_to_menu_handler, pattern=r'^back_to_menu$'))
     
-    application.add_handler(CallbackQueryHandler(change_spy_count_handler, pattern='r'^change_spy_count$'))
-    application.add_handler(CallbackQueryHandler(change_spy_count_handler, pattern='r'^spy_\d+$'))
-    application.add_handler(CallbackQueryHandler(change_category_handler, pattern='r'^change_category$'))
-    application.add_handler(CallbackQueryHandler(change_category_handler, pattern='r'^cat_\d+$'))
-    application.add_handler(CallbackQueryHandler(settings_done_handler, pattern='r'^settings_done$'))
-    application.add_handler(CallbackQueryHandler(back_to_settings_handler, pattern='r'^back_to_settings$'))
+    application.add_handler(CallbackQueryHandler(change_spy_count_handler, pattern=r'^change_spy_count$'))
+    application.add_handler(CallbackQueryHandler(change_spy_count_handler, pattern=r'^spy_\d+$'))
+    application.add_handler(CallbackQueryHandler(change_category_handler, pattern=r'^change_category$'))
+    application.add_handler(CallbackQueryHandler(change_category_handler, pattern=r'^cat_\d+$'))
+    application.add_handler(CallbackQueryHandler(settings_done_handler, pattern=r'^settings_done$'))
+    application.add_handler(CallbackQueryHandler(back_to_settings_handler, pattern=r'^back_to_settings$'))
     
-    application.add_handler(CallbackQueryHandler(room_settings_handler, pattern='r'^room_settings$'))
-    application.add_handler(CallbackQueryHandler(refresh_room_handler, pattern='r'^refresh_room$'))
-    application.add_handler(CallbackQueryHandler(start_game_handler, pattern='r'^start_game$'))
-    application.add_handler(CallbackQueryHandler(leave_room_handler, pattern='r'^leave_room$'))
+    application.add_handler(CallbackQueryHandler(room_settings_handler, pattern=r'^room_settings$'))
+    application.add_handler(CallbackQueryHandler(refresh_room_handler, pattern=r'^refresh_room$'))
+    application.add_handler(CallbackQueryHandler(start_game_handler, pattern=r'^start_game$'))
+    application.add_handler(CallbackQueryHandler(leave_room_handler, pattern=r'^leave_room$'))
     
-    application.add_handler(CallbackQueryHandler(show_role_handler, pattern='r'^show_role$'))
-    application.add_handler(CallbackQueryHandler(end_game_handler, pattern='r'^end_game$'))
-    application.add_handler(CallbackQueryHandler(play_again_handler, pattern='r'^play_again$'))
+    application.add_handler(CallbackQueryHandler(show_role_handler, pattern=r'^show_role$'))
+    application.add_handler(CallbackQueryHandler(end_game_handler, pattern=r'^end_game$'))
+    application.add_handler(CallbackQueryHandler(play_again_handler, pattern=r'^play_again$'))
     
     # Обработчик текстовых сообщений
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, message_handler))
