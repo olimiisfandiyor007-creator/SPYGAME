@@ -665,9 +665,9 @@ def main():
     application.add_handler(CallbackQueryHandler(back_to_menu_handler, pattern='^back_to_menu$'))
     
     application.add_handler(CallbackQueryHandler(change_spy_count_handler, pattern='^change_spy_count$'))
-    application.add_handler(CallbackQueryHandler(set_spy_count_handler, pattern='^spy_\d+$'))
+    application.add_handler(CallbackQueryHandler(change_spy_count_handler, pattern='^spy_\d+$'))
     application.add_handler(CallbackQueryHandler(change_category_handler, pattern='^change_category$'))
-    application.add_handler(CallbackQueryHandler(set_category_handler, pattern='^cat_\d+$'))
+    application.add_handler(CallbackQueryHandler(change_category_handler, pattern='^cat_\d+$'))
     application.add_handler(CallbackQueryHandler(settings_done_handler, pattern='^settings_done$'))
     application.add_handler(CallbackQueryHandler(back_to_settings_handler, pattern='^back_to_settings$'))
     
